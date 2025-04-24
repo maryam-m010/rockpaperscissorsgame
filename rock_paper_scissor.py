@@ -43,6 +43,24 @@ def playerchoice(player_input):
     
     if(player_input == computer_input):
         tie_func()
+    if(player_input[1] == 0):
+        if(computer_input[1] == 1):
+            computer_wins()
+        elif(computer_input[1] == 2):
+            player_wins()
+
+    elif(player_input[1] == 1):
+        if(computer_input[1] == 2):
+            computer_wins()
+        elif(computer_input[1] == 0):
+            player_wins()
+
+    elif(player_input[1] == 2):
+        if(computer_input[1] == 0):
+            computer_wins()
+        elif(computer_input[1] == 1):
+            player_wins()
+
 
 gametitle = Label(root, text = "Rock Paper Scissors!", font = font.Font(size = 20), fg = "grey")
 gametitle.pack()
@@ -56,13 +74,13 @@ a.pack()
 b = Label(a, text = "Your Options:", font = appfont, fg = "grey")
 b.grid(row = 0, column = 0)
 
-rock = Button(a, text = "Rock", width = 15, bg = "powder blue")
+rock = Button(a, text = "Rock", width = 15, bg = "powder blue", command = lambda: playerchoice(options[0]))
 rock.grid(row = 1, column = 1, padx = 25)
 
-paper = Button(a, text = "Paper", width = 15, bg = "medium aquamarine")
+paper = Button(a, text = "Paper", width = 15, bg = "medium aquamarine", command = lambda: playerchoice(options[1]))
 paper.grid(row = 1, column = 2, padx = 25)
 
-scissors = Button(a, text = "Scissors", width = 15, bg = "salmon")
+scissors = Button(a, text = "Scissors", width = 15, bg = "salmon", command = lambda: playerchoice(options[2]))
 scissors.grid(row = 1, column = 3, padx = 25)
 
 c = Label(a, text = "Score:", font = appfont, fg = "grey")
